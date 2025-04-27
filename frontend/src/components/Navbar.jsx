@@ -1,14 +1,26 @@
-import ThemeToggle from './ThemeToggle'
-import sidebarImage from '../assets/sidebar.webp'
+import sidebarImage from '../assets/sidebar.webp';
 
-export default function Navbar({ activePage, setActivePage }) {
+const Navbar = ({ activePage, setActivePage }) => {
   const pages = [
     { id: 'about', name: 'About' },
     { id: 'resume', name: 'Resume' },
     { id: 'projects', name: 'Projects' },
     { id: 'blog', name: 'Blog' },
     { id: 'contact', name: 'Contact' }
-  ]
+  ];
+
+  const handleMobileNavClick = (pageId) => {
+    setActivePage(pageId);
+    setTimeout(() => {
+      const element = document.getElementById(pageId);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }, 100);
+  };
 
   return (
     <>
@@ -38,9 +50,6 @@ export default function Navbar({ activePage, setActivePage }) {
             </li>
           ))}
         </ul>
-        <div className="ml-4">
-          <ThemeToggle />
-        </div>
       </nav>
 
       {/* Mobile Navbar */}
@@ -54,17 +63,16 @@ export default function Navbar({ activePage, setActivePage }) {
                     ? 'text-yellow-400'
                     : 'text-white/80 hover:text-yellow-400'
                 }`}
-                onClick={() => setActivePage(page.id)}
+                onClick={() => handleMobileNavClick(page.id)}
               >
                 {page.name}
               </button>
             </li>
           ))}
         </ul>
-        <div className="ml-2">
-          <ThemeToggle />
-        </div>
       </nav>
     </>
-  )
-}
+  );
+};
+
+export default Navbar;

@@ -1,54 +1,74 @@
-import BlogPostItem from '../components/BlogPostItem'
+import BlogPostItem from "../components/BlogPostItem";
+import sidebarImage from "../assets/sidebar.webp";
+import ProjectImg from "../assets/project.png";
 
-export default function Blog() {
+const Blog=({id}) =>{
   const posts = [
     {
       id: 1,
-      title: "Design conferences in 2022",
+      title: "Design Conferences in 2022",
       category: "Design",
       date: "Feb 23, 2022",
-      image: "/src/assets/images/blog-1.jpg",
-      excerpt: "Veritatis et quasi architecto beatae vitae dicta sunt, explicabo."
+      description:
+        "Explore upcoming design conferences featuring industry leaders and trends.",
+      link: "#",
+      image: ProjectImg,
     },
     {
       id: 2,
-      title: "Best fonts every designer",
+      title: "Best Fonts for Every Designer",
       category: "Design",
       date: "Feb 23, 2022",
-      image: "/src/assets/images/blog-2.jpg",
-      excerpt: "Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi."
+      description:
+        "Discover the top fonts that improve readability and aesthetics in design projects.",
+      link: "#",
+      image: ProjectImg,
     },
     {
       id: 3,
-      title: "Design digest #80",
+      title: "Design Digest #80",
       category: "Design",
       date: "Feb 23, 2022",
-      image: "/src/assets/images/blog-3.jpg",
-      excerpt: "Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit."
+      description:
+        "A curated list of design inspirations, UX trends, and creative breakthroughs.",
+      link: "#",
+      image: ProjectImg,
     },
     {
       id: 4,
-      title: "UI interactions of the week",
+      title: "UI Interactions of the Week",
       category: "Design",
       date: "Feb 23, 2022",
-      image: "/src/assets/images/blog-4.jpg",
-      excerpt: "Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi."
-    }
-  ]
+      description:
+        "An in-depth look at the latest engaging UI interactions and micro-animations.",
+      link: "#",
+      image: ProjectImg,
+    },
+  ];
 
   return (
-    <article className="card blog">
+    <section id={id}
+      className="relative overflow-hidden rounded-2xl shadow-2xl p-8 bg-gradient-to-br from-gray-900 to-gray-800"
+      style={{
+        backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url(${sidebarImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <header>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Blog</h2>
+        <h2 className="text-3xl font-bold text-white relative pb-3 mb-8 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-gradient-to-r after:from-yellow-500 after:to-yellow-600 after:rounded">
+          Blogs
+        </h2>
       </header>
 
-      <section className="blog-posts">
-        <ul className="blog-posts-list grid grid-cols-1 md:grid-cols-2 gap-6">
-          {posts.map(post => (
-            <BlogPostItem key={post.id} post={post} />
-          ))}
-        </ul>
-      </section>
-    </article>
-  )
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+        {posts.map((post) => (
+          <BlogPostItem key={post.id} post={post} />
+        ))}
+      </ul>
+    </section>
+  );
 }
+
+
+export default Blog
