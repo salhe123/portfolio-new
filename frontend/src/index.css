@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  @apply bg-gray-100 dark:bg-dark-900 text-gray-800;
+}
+
+/* Components will use these background classes */
+.card {
+  @apply bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700;
+}
+
+/* Scrollbar styles (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-200 dark:bg-dark-700;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-dark-500 rounded-md;
+}
