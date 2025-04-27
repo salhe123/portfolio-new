@@ -1,53 +1,60 @@
-import { IoBookOutline, IoBriefcaseOutline } from 'react-icons/io5'
+import { IoBookOutline, IoBriefcaseOutline } from "react-icons/io5";
+import sidebarImage from "../assets/sidebar.webp";
+import BDU from "../assets/bdu.jpeg";
+import Boost from "../assets/boost.png";
+import Minab from "../assets/minab.jpeg";
+import Abyssinia from "../assets/Abyssinia.png";
 
 export default function Resume() {
   const education = [
     {
-      title: "University school of the arts",
-      period: "2007 — 2008",
-      description: "Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur."
+      title: "Bahir Dar University",
+      period: "2019 — 2024",
+      description: "Bachelor's of Computer Engineering",
+      logo: BDU // Corrected logo reference
     },
-    {
-      title: "New york academy of art",
-      period: "2006 — 2007",
-      description: "Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est omnis."
-    },
-    {
-      title: "High school of art and design",
-      period: "2002 — 2004",
-      description: "Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur magni dolores eos."
-    }
-  ]
+  ];
 
   const experience = [
     {
-      title: "Creative director",
-      period: "2015 — Present",
-      description: "Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas molestias exceptur."
+      title: "Internship Trainer",
+      period: "May 2023 — Oct 2023",
+      company: "Boost Software Development PLC",
+      companyLink: "https://boostsoftwaredevelopment.com/",
+      description: "Attended development process of systems for different clients, collaborated with development team to know different market place programming frameworks like nodejs, expressjs, React, Nextjs, and agile Development and databases like mongodb.",
+      logo: Boost // Corrected logo reference
     },
     {
-      title: "Art director",
-      period: "2013 — 2015",
-      description: "Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur."
+      title: "Remote Internship Trainer",
+      period: "April 2023 — July 2023",
+      company: "Minab IT Solutions Sc (Haujobs)",
+      companyLink: "https://www.minabtech.com/",
+      description: "Developed responsive and dynamic web applications using Vue.js, Nuxt.js, and Tailwind CSS for the frontend, ensuring a seamless user experience. Built the backend using Golang, Hasura, and PostgreSQL to create scalable APIs and manage data efficiently.",
+      logo: Minab // Corrected logo reference
     },
     {
-      title: "Web designer",
-      period: "2010 — 2013",
-      description: "Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur."
+      title: "Full Stack Developer",
+      period: "Aug 2024 — present",
+      company: "Abyssinia Software Solutions",
+      companyLink: "https://www.abyssiniasoftware.com/",
+      description: "Since August 2024, I have been working as a Full Stack Developer and Mobile App Developer at Abyssinia Software Solutions. I design and develop responsive web applications and mobile apps, ensuring seamless user experiences. My role involves handling both frontend and backend development, building scalable and secure systems. I collaborate with cross-functional teams to deliver high-quality software solutions aligned with business needs.",
+      logo: Abyssinia // Corrected logo reference
     }
-  ]
-
-  const skills = [
-    { name: "Web design", percentage: 80 },
-    { name: "Graphic design", percentage: 70 },
-    { name: "Branding", percentage: 90 },
-    { name: "WordPress", percentage: 50 }
-  ]
+  ];
 
   return (
-    <article className="card resume">
+    <article
+      className="bg-cover bg-center bg-gradient-to-br from-gray-700/40 to-gray-800/40 p-8 rounded-xl shadow-lg"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${sidebarImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <header>
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">Resume</h2>
+        <h2 className="text-3xl font-bold text-white relative pb-3 mb-8 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-gradient-to-r after:from-yellow-500 after:to-yellow-600 after:rounded"></h2>
+        <h2 className="text-3xl font-bold text-white">Resume</h2>
       </header>
 
       <section className="timeline mb-12">
@@ -55,16 +62,22 @@ export default function Resume() {
           <div className="icon-box bg-blue-100 p-2 rounded-full mr-4">
             <IoBookOutline className="text-blue-600 text-xl" />
           </div>
-          <h3 className="text-xl font-medium text-gray-800">Education</h3>
+          <h3 className="text-xl font-medium text-white">Education</h3>
         </div>
 
         <ol className="timeline-list space-y-8 pl-8 border-l-2 border-gray-200">
           {education.map((item, index) => (
             <li key={index} className="timeline-item relative pl-6">
-              <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-1.5 top-1.5"></div>
-              <h4 className="text-lg font-medium text-gray-800">{item.title}</h4>
-              <span className="text-gray-500 text-sm block mb-2">{item.period}</span>
-              <p className="text-gray-600">{item.description}</p>
+              <div className="flex items-center space-x-4">
+                <img src={item.logo} alt="University Logo" className="w-14 h-14 rounded-full" />
+                <div>
+                  <h4 className="text-lg font-medium text-white">{item.title}</h4>
+                  <span className="text-gray-300 text-sm block mb-2">
+                    {item.period}
+                  </span>
+                  <p className="text-gray-300">{item.description}</p>
+                </div>
+              </div>
             </li>
           ))}
         </ol>
@@ -75,41 +88,32 @@ export default function Resume() {
           <div className="icon-box bg-blue-100 p-2 rounded-full mr-4">
             <IoBriefcaseOutline className="text-blue-600 text-xl" />
           </div>
-          <h3 className="text-xl font-medium text-gray-800">Experience</h3>
+          <h3 className="text-xl font-medium text-white">Experience</h3>
         </div>
 
         <ol className="timeline-list space-y-8 pl-8 border-l-2 border-gray-200">
           {experience.map((item, index) => (
             <li key={index} className="timeline-item relative pl-6">
-              <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-1.5 top-1.5"></div>
-              <h4 className="text-lg font-medium text-gray-800">{item.title}</h4>
-              <span className="text-gray-500 text-sm block mb-2">{item.period}</span>
-              <p className="text-gray-600">{item.description}</p>
+              <div className="flex items-center space-x-4">
+                <img src={item.logo} alt="Company Logo" className="w-14 h-14 rounded-full" />
+                <div>
+                  <h4 className="text-lg font-medium text-white">
+                    <a href={item.companyLink} target="_blank" rel="noopener noreferrer" className="hover:underline">{item.title}</a>
+                  </h4>
+                  <span className="text-gray-300 text-sm block mb-2">
+                    {item.period}
+                  </span>
+                  <p className="text-gray-300">{item.description}</p>
+                </div>
+              </div>
             </li>
           ))}
         </ol>
       </section>
 
       <section className="skill">
-        <h3 className="text-xl font-medium text-gray-800 mb-6">My skills</h3>
-
-        <ul className="skills-list bg-white p-6 rounded-lg shadow-sm space-y-4">
-          {skills.map((skill, index) => (
-            <li key={index} className="skills-item">
-              <div className="title-wrapper flex justify-between mb-1">
-                <h5 className="text-gray-700 font-medium">{skill.name}</h5>
-                <span className="text-gray-500">{skill.percentage}%</span>
-              </div>
-              <div className="skill-progress-bg w-full h-2 bg-gray-200 rounded-full">
-                <div 
-                  className="skill-progress-fill h-full bg-blue-500 rounded-full" 
-                  style={{ width: `${skill.percentage}%` }}
-                ></div>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <h3 className="text-xl font-medium text-white mb-6">My Skills</h3>
       </section>
     </article>
-  )
+  );
 }

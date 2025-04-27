@@ -1,16 +1,18 @@
 export default function ServiceItem({ icon, title, text }) {
-    return (
-      <li className="service-item bg-gradient-to-br from-gray-700 to-gray-900 p-6 rounded-xl shadow-md hover:shadow-lg transition-all relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-gray-600 before:to-gray-800 before:rounded-xl before:z-[-1]">
-        <div className="flex flex-col items-center text-center">
-          <div className="icon-box bg-gradient-to-br from-gray-600 to-gray-800 p-3 rounded-lg mb-4 text-yellow-400 shadow-md">
-            <img src={icon} alt={title} width="40" height="40" />
-          </div>
-  
-          <div className="service-content-box">
-            <h4 className="text-lg font-medium text-white mb-2">{title}</h4>
-            <p className="text-gray-400 text-sm">{text}</p>
-          </div>
+  return (
+    <li className="bg-gray-800/50 backdrop-blur-lg border border-gray-600/30 p-6 rounded-2xl shadow-md hover:shadow-yellow-500/20 transition-all duration-300 relative overflow-hidden">
+      <div className="flex flex-col items-center text-center">
+      <div className="bg-gradient-to-br from-purple-500/50 to-pink-500/50 p-4 rounded-full mb-4 shadow-md">
+  {icon}
+</div>
+
+
+
+        <div className="service-content-box">
+          <h4 className="text-lg font-semibold text-white mb-2">{title}</h4>
+          <p className="text-gray-300 text-sm">{text}</p>
         </div>
-      </li>
-    )
-  }
+      </div>
+    </li>
+  )
+}

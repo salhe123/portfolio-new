@@ -5,7 +5,7 @@ export default function Navbar({ activePage, setActivePage }) {
   const pages = [
     { id: 'about', name: 'About' },
     { id: 'resume', name: 'Resume' },
-    { id: 'portfolio', name: 'Portfolio' },
+    { id: 'projects', name: 'Projects' },
     { id: 'blog', name: 'Blog' },
     { id: 'contact', name: 'Contact' }
   ]
@@ -13,21 +13,23 @@ export default function Navbar({ activePage, setActivePage }) {
   return (
     <>
       {/* Desktop Navbar */}
-      <nav className="card hidden lg:flex bg-white dark:bg-dark-800 rounded-xl shadow-lg border border-gray-200 dark:border-dark-700 mb-4 p-2 items-center"      style={{
-              backgroundImage: `url(${sidebarImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}>
-              
-        <ul className="flex space-x-1 flex-1">
+      <nav
+        className="hidden lg:flex w-full rounded-2xl shadow-xl border border-gray-300/20 dark:border-gray-600/30 p-4 mb-6 items-center justify-between backdrop-blur-lg bg-white/10 dark:bg-dark-800/30 transition-all duration-300 relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${sidebarImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <ul className="flex space-x-4">
           {pages.map(page => (
             <li key={page.id}>
               <button
-                className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                  activePage === page.id 
-                    ? 'bg-gradient-to-br from-yellow-500 to-yellow-600 text-gray-900' 
-                    : 'text-gray-700 hover:text-yellow-500'
+                className={`px-5 py-2 rounded-xl font-semibold tracking-wide transition-all duration-300 ${
+                  activePage === page.id
+                    ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 shadow-md'
+                    : 'text-white/80 hover:text-yellow-400'
                 }`}
                 onClick={() => setActivePage(page.id)}
               >
@@ -36,30 +38,31 @@ export default function Navbar({ activePage, setActivePage }) {
             </li>
           ))}
         </ul>
-        <ThemeToggle />
+        <div className="ml-4">
+          <ThemeToggle />
+        </div>
       </nav>
 
       {/* Mobile Navbar */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-dark-800 shadow-lg border-t border-gray-200 dark:border-dark-700 z-50">
-        <div className="flex items-center">
+      <nav className="lg:hidden fixed bottom-4 left-4 right-4 mx-auto bg-white/10 dark:bg-dark-800/30 backdrop-blur-lg shadow-lg border border-gray-300/20 dark:border-gray-600/30 rounded-2xl p-2 flex items-center justify-between z-50">
+        <ul className="flex flex-1 justify-around items-center">
           {pages.map(page => (
-            <button
-              key={page.id}
-              className={`flex-1 py-3 px-2 text-xs font-medium ${
-                activePage === page.id 
-                  ? 'text-yellow-500' 
-                  : 'text-gray-700 hover:text-yellow-500'
-              }`}
-              onClick={() => setActivePage(page.id)}
-            >
-              <div className="flex flex-col items-center">
-                <span>{page.name}</span>
-              </div>
-            </button>
+            <li key={page.id}>
+              <button
+                className={`flex flex-col items-center text-xs font-medium transition-all duration-300 ${
+                  activePage === page.id
+                    ? 'text-yellow-400'
+                    : 'text-white/80 hover:text-yellow-400'
+                }`}
+                onClick={() => setActivePage(page.id)}
+              >
+                {page.name}
+              </button>
+            </li>
           ))}
-          <div className="p-2">
-            <ThemeToggle />
-          </div>
+        </ul>
+        <div className="ml-2">
+          <ThemeToggle />
         </div>
       </nav>
     </>

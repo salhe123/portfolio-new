@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import About from './pages/About'
 import Resume from './pages/Resume'
-import Portfolio from './pages/Portfolio'
+import Projects from './pages/Projects'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 
@@ -15,7 +15,7 @@ export default function App() {
     switch (activePage) {
       case 'about': return <About />
       case 'resume': return <Resume />
-      case 'portfolio': return <Portfolio />
+      case 'projects': return <Projects />
       case 'blog': return <Blog />
       case 'contact': return <Contact />
       default: return <About />
