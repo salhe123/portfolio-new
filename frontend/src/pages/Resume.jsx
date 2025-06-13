@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import { SiNextdotjs, SiFlutter, SiPostgresql } from "react-icons/si";
 
-const Resume = ({ id }) => {
+const Resume = ({ id, theme }) => {
   const education = [
     {
       title: "Bahir Dar University",
@@ -38,20 +38,20 @@ const Resume = ({ id }) => {
     },
     {
       title: "Remote Internship Trainer",
-      period: "April 2023 — July 2023",
+      period: "Sep 2023 — May 2024",
       company: "Minab IT Solutions Sc (Haujobs)",
       companyLink: "https://www.minabtech.com/",
       description:
-        "Developed responsive and dynamic web applications using Vue.js, Nuxt.js, and Tailwind CSS for the frontend, ensuring a seamless user experience. Built the backend using Golang, Hasura, and PostgreSQL to create scalable APIs and manage data efficiently.",
+        "Developed responsive and dynamic web applications using Vue.js, Nuxt.js, and Tailwind CSS for the frontend, ensuring a seamless user experience. Built the backend using Golang, Hasura, and PostgreSQL to create scalable APIs and manage data efficiently and aditionaly worked on mobile app development using Flutter, integrating it with the backend services.",
       logo: Minab,
     },
     {
       title: "Full Stack Developer",
-      period: "Aug 2024 — present",
+      period: "May 2024 — present",
       company: "Abyssinia Software Solutions",
       companyLink: "https://www.abyssiniasoftware.com/",
       description:
-        "Since August 2024, I have been working as a Full Stack Developer and Mobile App Developer at Abyssinia Software Solutions. I design and develop responsive web applications and mobile apps, ensuring seamless user experiences. My role involves handling both frontend and backend development, building scalable and secure systems. I collaborate with cross-functional teams to deliver high-quality software solutions aligned with business needs.",
+        "Since August 2024, I have been working as a Full Stack Developer and Mobile App Developer at Abyssinia Software Solutions. I design and develop responsive web applications and mobile apps, ensuring seamless user experiences. My role involves handling both frontend and backend development, building scalable and secure systems. I collaborate with cross-functional teams to deliver high-quality software solutions aligned with business needs and mobile app development using Flutter, integrating it with the backend services.",
       logo: Abyssinia,
     },
   ];
@@ -67,21 +67,30 @@ const Resume = ({ id }) => {
       name: "PostgreSQL",
       icon: <SiPostgresql className="text-2xl text-blue-600" />,
     },
+    {name: "Golang", icon: <FaDatabase className="text-2xl text-green-600" />},
+    {name:"AWS", icon: <FaDatabase className="text-2xl text-orange-500" />},
+    {name:"Docker", icon: <FaDatabase className="text-2xl text-blue-500" />},
+    {name:"CICD", icon: <FaGitAlt className="text-2xl text-red-500" />},
+    {name:"GraphQL", icon: <FaDatabase className="text-2xl text-purple-500" />},
   ];
 
   return (
     <article
       id={id}
-      className="bg-cover bg-center bg-gradient-to-br from-gray-700/40 to-gray-800/40 p-8 rounded-xl shadow-lg"
+      className={`p-8 rounded-xl shadow-lg transition-all duration-300 ${
+        theme === 'light' ? 'bg-white border-gray-200' : 'bg-gradient-to-br from-gray-700/40 to-gray-800/40 border-gray-300/20 dark:border-gray-600/30 backdrop-blur-lg'
+      }`}
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${sidebarImage})`,
+        backgroundImage: theme === 'light' ? 'none' : `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${sidebarImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
       <header>
-        <h2 className="text-3xl font-bold text-white relative pb-3 mb-8 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-gradient-to-r after:from-yellow-500 after:to-yellow-600 after:rounded">
+        <h2 className={`text-3xl font-bold relative pb-3 mb-8 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-10 after:h-1 after:bg-gradient-to-r after:from-yellow-500 after:to-yellow-600 after:rounded ${
+          theme === 'light' ? 'text-gray-900' : 'text-white'
+        }`}>
           Resume
         </h2>
       </header>
@@ -89,13 +98,19 @@ const Resume = ({ id }) => {
       {/* Education Section */}
       <section className="timeline mb-12">
         <div className="title-wrapper flex items-center mb-6">
-          <div className="icon-box bg-blue-100 p-2 rounded-full mr-4">
+          <div className={`icon-box p-2 rounded-full mr-4 ${
+            theme === 'light' ? 'bg-blue-50' : 'bg-blue-100'
+          }`}>
             <IoBookOutline className="text-blue-600 text-xl" />
           </div>
-          <h3 className="text-xl font-medium text-white">Education</h3>
+          <h3 className={`text-xl font-medium ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+            Education
+          </h3>
         </div>
 
-        <ol className="timeline-list space-y-8 pl-8 border-l-2 border-gray-200">
+        <ol className={`timeline-list space-y-8 pl-8 border-l-2 ${
+          theme === 'light' ? 'border-gray-300' : 'border-gray-200'
+        }`}>
           {education.map((item, index) => (
             <li key={index} className="timeline-item relative pl-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 items-start text-left space-y-2 sm:space-y-0">
@@ -105,13 +120,15 @@ const Resume = ({ id }) => {
                   className="w-14 h-14 rounded-full"
                 />
                 <div>
-                  <h4 className="text-lg font-medium text-white">
+                  <h4 className={`text-lg font-medium ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
                     {item.title}
                   </h4>
-                  <span className="text-gray-300 text-sm block mb-2">
+                  <span className={`text-sm block mb-2 ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
                     {item.period}
                   </span>
-                  <p className="text-gray-300">{item.description}</p>
+                  <p className={theme === 'light' ? 'text-gray-700' : 'text-gray-300'}>
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </li>
@@ -122,12 +139,18 @@ const Resume = ({ id }) => {
       {/* Experience Section */}
       <section className="timeline mb-12">
         <div className="title-wrapper flex items-center mb-6">
-          <div className="icon-box bg-blue-100 p-2 rounded-full mr-4">
+          <div className={`icon-box p-2 rounded-full mr-4 ${
+            theme === 'light' ? 'bg-blue-50' : 'bg-blue-100'
+          }`}>
             <IoBriefcaseOutline className="text-blue-600 text-xl" />
           </div>
-          <h3 className="text-xl font-medium text-white">Experience</h3>
+          <h3 className={`text-xl font-medium ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+            Experience
+          </h3>
         </div>
-        <ol className="timeline-list space-y-8 pl-8 border-l-2 border-gray-200">
+        <ol className={`timeline-list space-y-8 pl-8 border-l-2 ${
+          theme === 'light' ? 'border-gray-300' : 'border-gray-200'
+        }`}>
           {experience.map((item, index) => (
             <li key={index} className="timeline-item relative pl-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 items-start text-left space-y-2 sm:space-y-0">
@@ -137,7 +160,7 @@ const Resume = ({ id }) => {
                   className="w-14 h-14 rounded-full"
                 />
                 <div>
-                  <h4 className="text-lg font-medium text-white">
+                  <h4 className={`text-lg font-medium ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
                     <a
                       href={item.companyLink}
                       target="_blank"
@@ -147,10 +170,12 @@ const Resume = ({ id }) => {
                       {item.title}
                     </a>
                   </h4>
-                  <span className="text-gray-300 text-sm block mb-2">
+                  <span className={`text-sm block mb-2 ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
                     {item.period}
                   </span>
-                  <p className="text-gray-300">{item.description}</p>
+                  <p className={theme === 'light' ? 'text-gray-700' : 'text-gray-300'}>
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </li>
@@ -160,10 +185,16 @@ const Resume = ({ id }) => {
 
       {/* Skills Section */}
       <section className="skill">
-        <h3 className="text-xl font-medium text-white mb-6">My Skills</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 bg-gray-800/50 p-6 rounded-xl">
+        <h3 className={`text-xl font-medium mb-6 ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+          My Skills
+        </h3>
+        <div className={`grid grid-cols-2 sm:grid-cols-3 gap-6 p-6 rounded-xl ${
+          theme === 'light' ? 'bg-gray-50' : 'bg-gray-800/50'
+        }`}>
           {skills.map((skill, index) => (
-            <div key={index} className="flex flex-col items-center text-white">
+            <div key={index} className={`flex flex-col items-center ${
+              theme === 'light' ? 'text-gray-900' : 'text-white'
+            }`}>
               <div className="mb-2">{skill.icon}</div>
               <span>{skill.name}</span>
             </div>
